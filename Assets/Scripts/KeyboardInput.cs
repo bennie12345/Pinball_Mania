@@ -2,21 +2,18 @@
 using System.Collections;
 
 public class KeyboardInput : MonoBehaviour {
+	private FlipperRotation _fr;
+	void Start () {
+		_fr = GetComponent<FlipperRotation>();
+	}
 
-	void Update () {
+	void Update() {
 		if(Input.GetKey(KeyCode.A)) {
-			GameObject flipper = GameObject.FindWithTag("Flipper");
-			flipper.GetComponent<FlipperRotation>().Rotate(true, false);
-		}
+			_fr.Rotate(true, false);
+		} 
 
-		if(Input.GetKey(KeyCode.L)) {
-			GameObject flipper = GameObject.FindWithTag("Flipper");
-			flipper.GetComponent<FlipperRotation>().Rotate(false, true);
-		}
-
-		if(Input.GetKey(KeyCode.Space)) {
-			GameObject pin = GameObject.FindWithTag("Pin");
-			pin.GetComponent<PinShoot>().Shoot();
+		if(Input.GetKey(KeyCode.D)){
+			_fr.Rotate(false, true);
 		}
 	}
 }
