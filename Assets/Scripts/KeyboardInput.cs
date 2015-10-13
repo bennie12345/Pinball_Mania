@@ -8,11 +8,11 @@ public class KeyboardInput : MonoBehaviour {
 	}
 
 	void Update() {
-		if(Input.GetKey(KeyCode.A)) {
+		if(Input.GetKey(KeyCode.Q)) {
 			_fr.Rotate(true, false);
 		} 
 
-		if(Input.GetKey(KeyCode.D)){
+		if(Input.GetKey(KeyCode.P)){
 			_fr.Rotate(false, true);
 		}
 	}
