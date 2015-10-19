@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class PlayerRotation : MonoBehaviour {
-	float lookSensitivite = 5.0f;
+	float lookSensitivite = 10.0f;
 	float smoothDamp = 0.1f;
 	float zRotation;
 	float currentZRotation;
