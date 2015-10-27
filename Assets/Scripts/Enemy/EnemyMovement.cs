@@ -14,8 +14,10 @@ public class EnemyMovement : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+    void Update()
+    {
         float step = speed * Time.deltaTime;
         transform.position = Vector3.MoveTowards(transform.position, endPosition.transform.position, step);
-	}
+    }
+
 }

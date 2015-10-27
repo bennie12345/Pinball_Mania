@@ -6,7 +6,7 @@ public class EnemySpawner : MonoBehaviour
     private Vector3 startPos;
     private float newXPos = 0f;
     [SerializeField]private float moveSpeed = 1f;
-    [SerializeField]private float moveDistance = 4f;
+    [SerializeField]private float moveDistance = 20f;
     [SerializeField]private GameObject Enemy;
     [SerializeField]private float timeUntilSpawn = 0f;
     [SerializeField]private float startTime = 0f;
@@ -15,7 +15,7 @@ public class EnemySpawner : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        startPos = transform.position;
+        startPos = this.transform.position;
     }
 
     void SpawnEnemy()
