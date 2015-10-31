@@ -6,11 +6,11 @@ public class FlipperRotation : MonoBehaviour {
 
 	public void Rotate(bool left, bool right) {
 		if(left) {
-			flippers[0].GetComponent<Rigidbody>().AddForce(new Vector3(0,1000,0));
+			flippers[0].GetComponent<Rigidbody>().AddForce(new Vector3(0,2000,0));
 		}
 
 		if(right) {
-			flippers[1].GetComponent<Rigidbody>().AddForce(new Vector3(0,1000,0));
+			flippers[1].GetComponent<Rigidbody>().AddForce(new Vector3(0,2000,0));
 		}
 
 	}

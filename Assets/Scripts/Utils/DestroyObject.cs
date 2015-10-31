@@ -10,8 +10,8 @@ public class DestroyObject : MonoBehaviour {
 			DestroyAfterTime(0.2f, "Flash(Clone)");
 		}
 
-		if(transform.name == "Shootable") {
-
+		if(transform.name == "Bullet(Clone)") {
+			DestroyAfterTime(4.0f, "Bullet(Clone)");
 		}
 	}
 
@@ -19,9 +19,9 @@ public class DestroyObject : MonoBehaviour {
 		DestroyObject[] dos = GameObject.FindObjectsOfType<DestroyObject>();
 		destroyTime+=Time.deltaTime;
 		for(int i = 0; i < dos.Length; i++) {
-			GameObject flash = GameObject.Find(name);
+			GameObject go = GameObject.Find(name);
 			List<GameObject> list = new List<GameObject>();
-			list.Add(flash);
+			list.Add(go);
 			for(int j = 0; j < list.Count; j++){
 				if(destroyTime >= maxTime) {
 					Destroy(list[j].gameObject);

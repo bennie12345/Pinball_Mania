@@ -9,6 +9,6 @@ public class BulletMove : MonoBehaviour {
 	}
 
 	void Move() {
-		transform.Translate(-Vector3.up * movementSpeed * Time.deltaTime);
+		transform.Translate(Vector3.forward * movementSpeed * Time.deltaTime);
 	}
 }

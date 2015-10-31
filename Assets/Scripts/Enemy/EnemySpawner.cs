@@ -5,13 +5,9 @@ public class EnemySpawner : MonoBehaviour
 {
     private Vector3 startPos;
     private float newXPos = 0f;
-    [SerializeField]private float moveSpeed = 1f;
-    [SerializeField]private float moveDistance = 20f;
     [SerializeField]private GameObject Enemy;
-    [SerializeField]private float timeUntilSpawn = 0f;
-    [SerializeField]private float startTime = 0f;
+	[SerializeField]private float timeUntilSpawn = 0f;
     [SerializeField]private float secondsBetweenSpawn = 3f;
-    [SerializeField]private float offsetSpawner = 0f;
     // Use this for initialization
     void Start()
     {
@@ -22,22 +18,17 @@ public class EnemySpawner : MonoBehaviour
     {
 
         GameObject myEnemy = Instantiate(Enemy) as GameObject;
-
-        myEnemy.transform.position = transform.position;
+		newXPos = Random.Range(transform.position.x - 5, transform.position.x + 6);
+		myEnemy.transform.position = new Vector3(newXPos, startPos.y, startPos.z);
     }
 
     // Update is called once per frame
     void Update()
     {
-        newXPos = offsetSpawner + Mathf.PingPong(Time.time * moveSpeed, moveDistance) - (moveDistance / 2f);
-
-        transform.position = new Vector3(newXPos, startPos.y, startPos.z);
-
-        timeUntilSpawn = Time.time - startTime;
+		timeUntilSpawn += Time.deltaTime;
 
         if (timeUntilSpawn >= secondsBetweenSpawn)
         {
-            startTime = Time.time;
             timeUntilSpawn = 0;
             SpawnEnemy();
         }

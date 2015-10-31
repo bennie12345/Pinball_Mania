@@ -2,22 +2,28 @@
 using System.Collections;
 
 public class EnemyMovement : MonoBehaviour {
+	[SerializeField]private GameObject[] leftPath;
+	[SerializeField]private GameObject[] rightPath;
+	private GameObject[] path;
+	int next = 0;
 
-    [SerializeField]
-    private GameObject endPosition;
-    [SerializeField]
-    private float speed;
-
-	// Use this for initialization
-	void Start () {
-	
+	void Start() {
+		int rand = Random.Range(0,2);
+		if(rand == 0){
+			path = rightPath;
+		} else if (rand == 1) {
+			path = leftPath;
+		}
 	}
-	
-	// Update is called once per frame
-    void Update()
-    {
-        float step = speed * Time.deltaTime;
-        transform.position = Vector3.MoveTowards(transform.position, endPosition.transform.position, step);
-    }
 
+	void Update() {
+		FollowPath();
+	}
+
+	void FollowPath() {
+		transform.position = Vector3.MoveTowards(transform.position, path[next].transform.position, 0.1f);
+		if(transform.position == path[next].transform.position) {
+			next++;
+		}
+	}
 }

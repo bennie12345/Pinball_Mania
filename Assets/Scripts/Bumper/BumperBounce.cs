@@ -2,9 +2,6 @@
 using System.Collections;
 
 public class BumperBounce : MonoBehaviour {
-	void Update() {
-		GetDirection();
-	}
 
 	Vector3 GetDirection() {
 		Vector3 player = GameObject.FindWithTag("Player").transform.position;
@@ -17,6 +14,14 @@ public class BumperBounce : MonoBehaviour {
 	}
 
 	void OnCollisionEnter(Collision coll) {
-		Debug.Log(-GetDirection());
+		if(coll.transform.name != "Enemy(Clone)") {
+			if(transform.name == "ReverseBumperY") {
+				coll.rigidbody.AddForce(new Vector3(-GetDirection().x * 2000, (-GetDirection().y - (-GetDirection().y * 2)) * 1000 , GetDirection().z * 1000));
+			} else if(transform.name == "ReverseBumperX") {
+				coll.rigidbody.AddForce(new Vector3(GetDirection().x * 1000, (GetDirection().y - (GetDirection().y * 2)) * 1000 , -GetDirection().z * 1000));
+			} else {
+				coll.rigidbody.AddForce(new Vector3(-GetDirection().x * 1000, (GetDirection().y - (GetDirection().y * 2)) * 1000 , -GetDirection().z * 1000));
+			}
+		}
 	} 
 }
